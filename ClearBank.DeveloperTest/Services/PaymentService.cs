@@ -24,11 +24,16 @@ namespace ClearBank.DeveloperTest.Services
 
             if (result.Success)
             {
-                account.Balance -= request.Amount;
-
-                accountDataStore.UpdateAccount(account);
+                DeductAmount(request, account, accountDataStore);
             }
             return result;
+        }
+
+        private void DeductAmount(MakePaymentRequest request, Account account, IDataStore accountDataStore)
+        {
+            account.Balance -= request.Amount;
+
+            accountDataStore.UpdateAccount(account);
         }
     }
 }

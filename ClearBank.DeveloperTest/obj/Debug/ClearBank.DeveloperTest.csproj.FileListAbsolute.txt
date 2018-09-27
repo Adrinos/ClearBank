@@ -8,3 +8,4 @@ C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\bin\Debug\ClearBank.Develop
 C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.csproj.CoreCompileInputs.cache
 C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.dll
 C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.pdb
+C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.csprojAssemblyReference.cache

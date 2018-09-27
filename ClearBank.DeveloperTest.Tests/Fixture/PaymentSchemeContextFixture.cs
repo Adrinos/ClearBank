@@ -1,7 +1,7 @@
 ﻿using System;
 using ClearBank.DeveloperTest.Strategies;
 
-namespace ClearBank.DeveloperTest.Tests
+namespace ClearBank.DeveloperTest.Tests.Fixture
 {
     public class PaymentSchemeContextFixture : IDisposable
     {

@@ -74,9 +74,9 @@
     <Compile Include="BacsPaymentTests.cs" />
     <Compile Include="ChapsPaymentTests.cs" />
     <Compile Include="FasterPaymentTests.cs" />
-    <Compile Include="PaymentSchemeContextFixture.cs" />
+    <Compile Include="Fixture\PaymentSchemeContextFixture.cs" />
     <Compile Include="PaymentServiceTests.cs" />
-    <Compile Include="PaymentStrategyCollection.cs" />
+    <Compile Include="Collection\PaymentStrategyCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

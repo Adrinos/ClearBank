@@ -1,4 +1,5 @@
 ﻿using System;
+using ClearBank.DeveloperTest.Tests.Fixture;
 using ClearBank.DeveloperTest.Types;
 using Shouldly;
 using Xunit;
