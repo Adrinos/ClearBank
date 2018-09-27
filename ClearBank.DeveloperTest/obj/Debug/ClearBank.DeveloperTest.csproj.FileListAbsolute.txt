@@ -3,3 +3,8 @@ C:\Users\Gareth\Documents\Repos\ClearBank\ClearBank.DeveloperTest\bin\Debug\Clea
 C:\Users\Gareth\Documents\Repos\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.csproj.CoreCompileInputs.cache
 C:\Users\Gareth\Documents\Repos\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.dll
 C:\Users\Gareth\Documents\Repos\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.pdb
+C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\bin\Debug\ClearBank.DeveloperTest.dll
+C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\bin\Debug\ClearBank.DeveloperTest.pdb
+C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.csproj.CoreCompileInputs.cache
+C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.dll
+C:\Repos\ClearBank\ClearBank\ClearBank.DeveloperTest\obj\Debug\ClearBank.DeveloperTest.pdb

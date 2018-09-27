@@ -1,12 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ClearBank.DeveloperTest.Strategies;
 
 namespace ClearBank.DeveloperTest.Tests
 {
-    class PaymentSchemeContextFixture
+    public class PaymentSchemeContextFixture : IDisposable
     {
+        public PaymentSchemeContext Sut { get; private set; }
+
+        public PaymentSchemeContextFixture()
+        {
+            Sut = new PaymentSchemeContext();
+        }
+
+        public void Dispose()
+        {
+            Sut = null;
+        }
     }
 }

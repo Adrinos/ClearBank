@@ -1,47 +1,22 @@
 ﻿using System;
-using ClearBank.DeveloperTest.Strategies;
 using ClearBank.DeveloperTest.Types;
 using Shouldly;
 using Xunit;
 
 namespace ClearBank.DeveloperTest.Tests
 {
-    public class StrategiesFixtureTest : IDisposable
+    [Collection("Payment Strategy Collection")]
+    public class FasterPaymentTests
     {
-        public PaymentSchemeContext Sut { get; set; }
+        private readonly PaymentSchemeContextFixture _fixture;
 
-        public StrategiesFixtureTest()
+        public FasterPaymentTests(PaymentSchemeContextFixture fixture)
         {
-            Sut = new PaymentSchemeContext();
+            _fixture = fixture;
         }
 
         [Fact]
-        public void BacsStrategyTest()
-        {
-            var account = new Account()
-            {
-                AccountNumber = "1",
-                Balance = 100.00m,
-                Status = AccountStatus.Live,
-                AllowedPaymentSchemes = AllowedPaymentSchemes.Bacs
-            };
-
-            var request = new MakePaymentRequest()
-            {
-                Amount = 50.00m,
-                DebtorAccountNumber = "1",
-                CreditorAccountNumber = "2",
-                PaymentDate = new DateTime(),
-                PaymentScheme = PaymentScheme.Bacs
-            };
-
-            var result = Sut.ValidatePayment(account, request);
-
-            result.ShouldBe(true);
-        }
-
-        [Fact]
-        public void FasterPaymentStrategyTest()
+        public void FasterPaymentShouldReturnTrue()
         {
             var account = new Account()
             {
@@ -60,20 +35,39 @@ namespace ClearBank.DeveloperTest.Tests
                 PaymentScheme = PaymentScheme.FasterPayments
             };
 
-            var result = Sut.ValidatePayment(account, request);
+            var result = _fixture.Sut.ValidatePayment(account, request);
 
             result.ShouldBe(true);
         }
 
         [Fact]
-        public void ChapsStrategyTest()
+        public void FasterPaymentShouldFailIfThereIsNoAccount()
+        {
+            var account = new Account();
+
+            var request = new MakePaymentRequest()
+            {
+                Amount = 50.00m,
+                DebtorAccountNumber = "1",
+                CreditorAccountNumber = "2",
+                PaymentDate = new DateTime(),
+                PaymentScheme = PaymentScheme.FasterPayments
+            };
+
+            var result = _fixture.Sut.ValidatePayment(account, request);
+
+            result.ShouldBe(false);
+        }
+
+        [Fact]
+        public void FasterPaymentShoudlFailIfBacsFlagIsNotSet()
         {
             var account = new Account()
             {
                 AccountNumber = "1",
                 Balance = 100.00m,
                 Status = AccountStatus.Live,
-                AllowedPaymentSchemes = AllowedPaymentSchemes.Chaps
+                AllowedPaymentSchemes = AllowedPaymentSchemes.FasterPayments
             };
 
             var request = new MakePaymentRequest()
@@ -85,14 +79,34 @@ namespace ClearBank.DeveloperTest.Tests
                 PaymentScheme = PaymentScheme.Chaps
             };
 
-            var result = Sut.ValidatePayment(account, request);
+            var result = _fixture.Sut.ValidatePayment(account, request);
 
-            result.ShouldBe(true);
+            result.ShouldBe(false);
         }
 
-        public void Dispose()
+        [Fact]
+        public void FasterPaymentShouldFailIfBalanceIsLowerThanAmount()
         {
-            
+            var account = new Account()
+            {
+                AccountNumber = "1",
+                Balance = 25.00m,
+                Status = AccountStatus.Live,
+                AllowedPaymentSchemes = AllowedPaymentSchemes.FasterPayments
+            };
+
+            var request = new MakePaymentRequest()
+            {
+                Amount = 50.00m,
+                DebtorAccountNumber = "1",
+                CreditorAccountNumber = "2",
+                PaymentDate = new DateTime(),
+                PaymentScheme = PaymentScheme.FasterPayments
+            };
+
+            var result = _fixture.Sut.ValidatePayment(account, request);
+
+            result.ShouldBe(false);
         }
     }
 }
