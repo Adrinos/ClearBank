@@ -6,17 +6,19 @@ using Moq;
 using Shouldly;
 using Xunit;
 
-namespace ClearBank.DeveloperTest.Tests
+namespace ClearBank.DeveloperTest.Tests.Tests
 {
     public class PaymentServiceTests
     {
         private Mock<IPaymentSchemeContext> PaymentSchemeContext { get; set; }
         private Mock<IDataStoreHelper> DataStoreHelperMock { get; set; }
+        public Mock<IBalanceService> BalanceServiceMock { get; set; }
 
         public PaymentServiceTests()
         {
             PaymentSchemeContext = new Mock<IPaymentSchemeContext>();
             DataStoreHelperMock = new Mock<IDataStoreHelper>();
+            BalanceServiceMock = new Mock<IBalanceService>();
         }
 
         [Fact]
@@ -42,7 +44,7 @@ namespace ClearBank.DeveloperTest.Tests
             DataStoreHelperMock.Setup(x => x.GetDataStoreType().GetAccount("1")).Returns(account);
             PaymentSchemeContext.Setup(p => p.ValidatePayment(account, request)).Returns(true);
 
-            var sut = new PaymentService(DataStoreHelperMock.Object, PaymentSchemeContext.Object);
+            var sut = new PaymentService(DataStoreHelperMock.Object, PaymentSchemeContext.Object, BalanceServiceMock.Object);
 
             var result = sut.MakePayment(request);
 
@@ -72,7 +74,7 @@ namespace ClearBank.DeveloperTest.Tests
             DataStoreHelperMock.Setup(x => x.GetDataStoreType().GetAccount("1")).Returns(account);
             PaymentSchemeContext.Setup(p => p.ValidatePayment(account, request)).Returns(true);
 
-            var sut = new PaymentService(DataStoreHelperMock.Object, PaymentSchemeContext.Object);
+            var sut = new PaymentService(DataStoreHelperMock.Object, PaymentSchemeContext.Object, BalanceServiceMock.Object);
 
             var result = sut.MakePayment(request);
 
@@ -102,14 +104,11 @@ namespace ClearBank.DeveloperTest.Tests
             DataStoreHelperMock.Setup(x => x.GetDataStoreType().GetAccount("1")).Returns(account);
             PaymentSchemeContext.Setup(p => p.ValidatePayment(account, request)).Returns(true);
 
-            var sut = new PaymentService(DataStoreHelperMock.Object, PaymentSchemeContext.Object);
+            var sut = new PaymentService(DataStoreHelperMock.Object, PaymentSchemeContext.Object, BalanceServiceMock.Object);
 
             var result = sut.MakePayment(request);
 
             result.Success.ShouldBe(true);
         }
-
-        //[Fact]
-        //public void 
     }
 }

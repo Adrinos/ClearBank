@@ -4,7 +4,7 @@ using ClearBank.DeveloperTest.Types;
 using Shouldly;
 using Xunit;
 
-namespace ClearBank.DeveloperTest.Tests
+namespace ClearBank.DeveloperTest.Tests.Tests
 {
     [Collection("Payment Strategy Collection")]
     public class BacsPaymentTests

@@ -71,11 +71,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BacsPaymentTests.cs" />
-    <Compile Include="ChapsPaymentTests.cs" />
-    <Compile Include="FasterPaymentTests.cs" />
+    <Compile Include="Tests\BacsPaymentTests.cs" />
+    <Compile Include="Tests\BalanceServiceTests.cs" />
+    <Compile Include="Tests\ChapsPaymentTests.cs" />
+    <Compile Include="Tests\FasterPaymentTests.cs" />
     <Compile Include="Fixture\PaymentSchemeContextFixture.cs" />
-    <Compile Include="PaymentServiceTests.cs" />
+    <Compile Include="Tests\PaymentServiceTests.cs" />
     <Compile Include="Collection\PaymentStrategyCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

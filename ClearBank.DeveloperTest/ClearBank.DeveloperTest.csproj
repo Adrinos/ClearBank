@@ -49,6 +49,8 @@
     <Compile Include="Interfaces\IPaymentSchemeStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IPaymentService.cs" />
+    <Compile Include="Services\BalanceService.cs" />
+    <Compile Include="Interfaces\IBalanceService.cs" />
     <Compile Include="Services\PaymentService.cs" />
     <Compile Include="Strategies\BacsPaymentStrategy.cs" />
     <Compile Include="Strategies\ChapsPaymentStrategy.cs" />

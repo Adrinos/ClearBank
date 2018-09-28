@@ -7,11 +7,13 @@ namespace ClearBank.DeveloperTest.Services
     {
         private readonly IDataStoreHelper _dataStoreHelper;
         private readonly IPaymentSchemeContext _payPaymentSchemeContext;
+        private readonly IBalanceService _balanceService;
 
-        public PaymentService(IDataStoreHelper dataStoreHelper, IPaymentSchemeContext payPaymentSchemeContext)
+        public PaymentService(IDataStoreHelper dataStoreHelper, IPaymentSchemeContext payPaymentSchemeContext, IBalanceService balanceService)
         {
             _dataStoreHelper = dataStoreHelper;
             _payPaymentSchemeContext = payPaymentSchemeContext;
+            _balanceService = balanceService;
         }
 
         public MakePaymentResult MakePayment(MakePaymentRequest request)
@@ -24,16 +26,11 @@ namespace ClearBank.DeveloperTest.Services
 
             if (result.Success)
             {
-                DeductAmount(request, account, accountDataStore);
+                _balanceService.DeductAmount(request, account);
+
+                accountDataStore.UpdateAccount(account);
             }
             return result;
-        }
-
-        private void DeductAmount(MakePaymentRequest request, Account account, IDataStore accountDataStore)
-        {
-            account.Balance -= request.Amount;
-
-            accountDataStore.UpdateAccount(account);
         }
     }
 }
